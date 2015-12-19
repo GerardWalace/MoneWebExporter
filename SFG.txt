@@ -1,0 +1,106 @@
+ - Il faut ouvrir le fichier excel s'il existe
+  - En extraire les lignes existantes + la conf (dernier lancement
+ - Appeller le serveur 
+ 
+ 
+ 
+ 
+ TDD :
+  - lancer l'application
+  - remplir le fichier excel (parametres)
+  - lancer l'application
+  - affiche le nombre de plateau repas depuis la dernière fois
+   - avoir dans le fichier excel un historique
+   
+   
+Le fichier Excel doit avoir trois onglets :
+ - 1) parametrage
+  Adresse moneweb
+  Login
+  Mot de passe
+  Date de référence
+  
+ - 2) historique
+  Date de lancement
+  nombre de lignes récupérées
+  date de référence utilisée
+  nombre de repas depuis le dernier lancement
+  erreurs
+  
+ - 3) repas
+  tableau telechargé d'internet
+  
+  
+  
+Algo :
+si le fichier n'eiste pas, le créer, afficher un essage à l'utilisateur, quitter l'application
+Si le fichier existe :
+ - Chargement onglet parametre
+ - Chargement onglet historique
+ - Chargement onglet Repas
+ En cas d'erreur lors des étapes précédentes, quitter l'application
+Si les parametres ne sont pas valides, afficher un message à l'utilisateur puis quitter l'application
+Connexion au site web, telechargement des repas
+Si erreur, on log une erreur dans le fichier excel (si possible), puis on quitte en l'affichant à l'utilisateur.
+Concatenation avec les repas du fichier excel
+On effectue la mesure du nombre de repas, on log un lancement reussi dans le fichier excel, on enregistre les repas, on quitte en affichant le nombre de repas.
+
+Messages :
+Chargemebnt fichier excel => Reussi
+Connexion au site web => Reussi
+Enregistrement des lignes telechargées => Réussi, X nouvelles lignes telechargées
+Depuis le XXX, vous avez mangé X fois a la cantine, deduisez ce nombre de vos droits pour le mois en cours.
+
+
+Exemple :
+LMMJ|VSD LMMJV|SD LMMJVSD|
+XX-X X-- X--XX -- X-XX---
+4(3)
+3(4)
+4(4)
+
+
+Architecture :
+ExceptionInterne : De manière a n'afficher que le message d'erreur (et pas la pile d'appel)
+Main : Algo ci-dessus
+Navigateur de fichier : (disposable)
+  Existence fichier ?
+  Ouvrir un fichier
+    Existence fichier ??
+    Creer fichier
+    Enreigstrer parametre, historique, repas, vides
+  Recuperer les parametres
+    Existence onglet ?
+    Lecture onglet
+    Transformation tableau en Parametre
+  Recuperer l'historique
+  Recuperer les Repas
+  Enregistrer les parametres
+    Existence onglet ?
+    Creer Onglet / vider onglet
+    Transformation parametres en tableau
+    Ecrire tableau
+  Enregistrer l'historique
+  Enregistrer les Repas
+  Fermer fichier
+Navigateur Web :
+  Telecharger des repas
+    connexion site
+    telchargement tableau
+    changer de page
+    transformation tableau Internet en tableau Repas
+Traitements :
+  Concatenation de repas
+  Calcul du nombre de repas depuis une certaine date
+  Creer une log de lancement (potentiellement sur la base d'une exception)
+  
+  
+Structures :
+Repas (Avec des fonction d'égalité)
+Parametrage
+LogLancement
+
+
+Tests :
+Tester le fait que le navigateur de fichier est bien disposable
+TODO
