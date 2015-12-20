@@ -6,7 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MoneWebExporter
+namespace MoneWebExporter.Internet.HtmlAgility
 {
     /// <summary>
     /// A Browser class

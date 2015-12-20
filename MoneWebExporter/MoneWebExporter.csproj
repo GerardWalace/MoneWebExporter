@@ -50,11 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Browser.cs" />
-    <Compile Include="FormElementCollection.cs" />
+    <Compile Include="Data\FireException.cs" />
+    <Compile Include="Data\LigneLog.cs" />
+    <Compile Include="Data\Parametres.cs" />
+    <Compile Include="Data\Ticket.cs" />
+    <Compile Include="Excel\ExcelBrowser.cs" />
+    <Compile Include="Internet\HtmlAgility\Browser.cs" />
+    <Compile Include="Internet\HtmlAgility\FormElementCollection.cs" />
+    <Compile Include="Internet\InternetBrowser.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Test\Browser.cs" />
+    <Compile Include="Test\FormElementCollection.cs" />
+    <Compile Include="Test\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SodexoTicket.cs" />
+    <Compile Include="Test\SodexoTicket.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
