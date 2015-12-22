@@ -1,10 +1,4 @@
- - Il faut ouvrir le fichier excel s'il existe
-  - En extraire les lignes existantes + la conf (dernier lancement
- - Appeller le serveur 
- 
- 
- 
- 
+
  TDD :
   - lancer l'application
   - remplir le fichier excel (parametres)
