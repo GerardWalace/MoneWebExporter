@@ -54,6 +54,7 @@
     <Compile Include="Data\LigneLog.cs" />
     <Compile Include="Data\Parametres.cs" />
     <Compile Include="Data\Ticket.cs" />
+    <Compile Include="DateHelper.cs" />
     <Compile Include="Excel\ExcelBrowser.cs" />
     <Compile Include="Internet\HtmlAgility\Browser.cs" />
     <Compile Include="Internet\HtmlAgility\FormElementCollection.cs" />

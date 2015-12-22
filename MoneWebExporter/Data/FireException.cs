@@ -8,5 +8,10 @@ namespace MoneWebExporter.Data
 {
     class FireException : Exception
     {
+        public FireException(string message)
+            : base(message)
+        {
+
+        }
     }
 }
