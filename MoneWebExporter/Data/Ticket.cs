@@ -41,5 +41,40 @@ namespace MoneWebExporter.Data
         /// Information Sodexo : Nouveau Solde
         /// </summary>
         public string NouveauSolde { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            Ticket ticket = obj as Ticket;
+            if (ticket != null)
+                return Equals(ticket);
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            if (Date != null)
+                return Date.GetHashCode();
+            else
+                return 0;
+        }
+
+        public bool Equals(Ticket ticket)
+        {
+            return ticket != null && this.Date == ticket.Date;
+        }
+
+        public static bool operator ==(Ticket a, Ticket b)
+        {
+            if (Object.ReferenceEquals(a, null) || Object.ReferenceEquals(b, null))
+                return Object.ReferenceEquals(a, b);
+            else
+                return a.Equals(b);
+        }
+
+        public static bool operator != (Ticket a, Ticket b)
+        {
+            return !(a == b);
+        }
     }
 }

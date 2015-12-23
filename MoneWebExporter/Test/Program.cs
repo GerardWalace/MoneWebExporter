@@ -60,35 +60,6 @@ namespace MoneWebExporter.Test
             {
                 //TODO Error
             }
-
-            // Update Excel File
-            //TODO
-            FileInfo xlFile = new FileInfo("test.xlsx");
-            using (ExcelPackage xlPackage = new ExcelPackage(xlFile))
-            {
-                ExcelWorksheet worksheet = xlPackage.Workbook.Worksheets.Add("Test Export");
-                worksheet.Cells[1, 1].Value = "Date";
-                worksheet.Cells[1, 2].Value = "Activité";
-                worksheet.Cells[1, 3].Value = "Ancien solde";
-                worksheet.Cells[1, 4].Value = "Plateau";
-                worksheet.Cells[1, 5].Value = "Financier";
-                worksheet.Cells[1, 6].Value = "Nouveau solde";
-
-                for (int i = 0; i < list.Count; i++)
-                {
-                    worksheet.Cells[i + 2, 1].Value = list[i].Date;
-                    worksheet.Cells[i + 2, 2].Value = list[i].Activite;
-                    worksheet.Cells[i + 2, 3].Value = list[i].AncienSolde;
-                    worksheet.Cells[i + 2, 4].Value = list[i].Plateau;
-                    worksheet.Cells[i + 2, 5].Value = list[i].Financier;
-                    worksheet.Cells[i + 2, 6].Value = list[i].NouveauSolde;
-                }
-                                    
-                xlPackage.Save();
-            }
-
-            // Calculate results
-            //TODO
         }
     }
 }

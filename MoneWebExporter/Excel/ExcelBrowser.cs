@@ -12,9 +12,9 @@ namespace MoneWebExporter.Excel
     public class ExcelBrowser : IDisposable
     {
         public const string FILE_NAME = "MoneWebExporter.xlsx";
-        private const string SHEETNAME_PARAMETRES = "PARAMETRES";
-        private const string SHEETNAME_HISTORIQUES = "HISTORIQUES";
-        private const string SHEETNAME_TICKETS = "TICKETS";
+        public const string SHEETNAME_PARAMETRES = "PARAMETRES";
+        public const string SHEETNAME_HISTORIQUES = "HISTORIQUES";
+        public const string SHEETNAME_TICKETS = "TICKETS";
 
         private FileInfo xlFichier;
         private ExcelPackage xlPackage;
@@ -59,11 +59,11 @@ namespace MoneWebExporter.Excel
         private ExcelWorksheet OpenClearSheet(string name)
         {
             ExcelWorksheet worksheet;
-            worksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(w => w.Name == SHEETNAME_PARAMETRES);
+            worksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(w => w.Name == name);
             if (worksheet != null)
                 xlPackage.Workbook.Worksheets.Delete(worksheet);
 
-            worksheet = xlPackage.Workbook.Worksheets.Add(SHEETNAME_PARAMETRES);
+            worksheet = xlPackage.Workbook.Worksheets.Add(name);
 
             return worksheet;
         }
@@ -71,9 +71,9 @@ namespace MoneWebExporter.Excel
         private ExcelWorksheet OpenSheet(string name)
         {
             ExcelWorksheet worksheet;
-            worksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(w => w.Name == SHEETNAME_PARAMETRES);
+            worksheet = xlPackage.Workbook.Worksheets.FirstOrDefault(w => w.Name == name);
             if (worksheet == null)
-                throw new FireException("Le fichier xlsx n'est pas valide. Il ne contient pas l'onglet des parametres.");
+                throw new FireException(String.Format("Le fichier xlsx n'est pas valide. Il ne contient pas l'onglet {0}.", name));
 
             return worksheet;
         }
